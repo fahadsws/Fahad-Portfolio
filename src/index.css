@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #6E56CF;
+  --secondary: #1DB4D0;
+  --accent: #FF7D55;
+  --background: #09090B;
+  --foreground: #FAFAFA;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none;
+}
+
+html {
+  @apply scroll-smooth;
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow: hidden;
+}
+
+.section {
+  @apply min-h-screen flex flex-col justify-center px-4 md:px-8 lg:px-16 py-24;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+main {
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+  
+  .btn {
+    @apply px-6 py-3 rounded-full font-medium transition-all duration-300 outline-none focus:ring-2 focus:ring-primary/50;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90 active:bg-primary/80;
+  }
+  
+  .btn-outline {
+    @apply border border-white/20 hover:bg-white/10 active:bg-white/20;
+  }
+}
